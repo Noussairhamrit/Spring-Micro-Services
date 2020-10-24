@@ -46,7 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		
 		/// *****************************************************
+		//il faut role admin
 		http.authorizeRequests().antMatchers("/appUsers/**").hasAuthority("ADMIN");
+		//login et register sans authentification
+		http.authorizeRequests().antMatchers("/login/**","/register/**").permitAll();
+		//le reste avec authentification
 		http.authorizeRequests().anyRequest().authenticated();
 	}
 

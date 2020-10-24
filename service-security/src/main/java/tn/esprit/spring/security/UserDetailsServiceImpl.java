@@ -23,8 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
 		/*il faut retirer les information des user et le mettre dans un nouveau objet 
 		 * user gérer par spring  */
+		
 		AppUser appuser=accountService.loadUserByUsername(username);
 		if(appuser==null) throw new UsernameNotFoundException("Invalid User");
 		Collection<GrantedAuthority> authorities=new ArrayList<GrantedAuthority>();
