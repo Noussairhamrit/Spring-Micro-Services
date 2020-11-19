@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Gesyion des catecories</div>
+    <div class="panel-body">
+        <div>
+            <button class="btn btn-success" (click)="onNewCat()">
+                <span class="glyohicon glyohicon-plus">
+                    </span>
+            </button>
+            <p></p>
+            <div *ngIf="mode=='new-cat'" class="col-md6">
+                <form #f="ngForm" (ngSubmit)="onSaveCat(f.value)">
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <input type="text" name="name" ngModel class="from-control">
+                    </div>
+                        <button class="btn btn-success" type="submit">Save</button>
+                </form>
+            </div>
+            <div *ngIf="mode=='edit-cat'" class="col-md6">
+                <form #f="ngForm" (ngSubmit)="onUpdateCat(f.value)">
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <input type="text" name="name" ngModel class="from-control" [(ngModel)]="currentCategorie.name">
+                    </div>
+                        <button class="btn btn-success" type="submit">Update</button>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="mode=='list'">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr *ngFor="let c of categories._embedded.categories">
+                <td>{{c.name}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="onDeleteCat(c)">
+                        <span class="glyohicon glyohicon-revome">
+
+                        </span>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="onEditCat(c)">
+                        <span class="glyohicon glyohicon-edit">
+
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</div>

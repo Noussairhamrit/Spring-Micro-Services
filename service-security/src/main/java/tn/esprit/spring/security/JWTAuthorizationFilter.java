@@ -38,14 +38,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 		respense.addHeader("Access-Control-Allow-Origin", "*");
 		respense.addHeader("Access-Control-Allow-Headers", "Origin, Accect, X-Requested-With, Content-Type, Access-Control-Request-Method ,Access-Control-Request-Headers, authorization ");
 		respense.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin, Access-Control-Allow-Credentials ,authorization");
-		
+		respense.addHeader("Access-Control-Allow-Methods","GET ,POST,PUT,DELETE,PATCH");
 		if (request.getMethod().equals("OPTIONS")) {
 			respense.setStatus(HttpServletResponse.SC_OK);	
 		}
-		else if(request.getRequestURI().equals("/login")){
-			filterChain.doFilter(request, respense);
-			return;
-		}
+		
 		else {
 			
 		String jwtToken=request.getHeader(SecurityParams.JWT_HEADERNAME);

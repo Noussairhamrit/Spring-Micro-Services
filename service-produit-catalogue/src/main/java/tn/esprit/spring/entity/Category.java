@@ -47,7 +47,7 @@ public Category(String id, String name, Collection<Produit> produits) {
 }
 public Category() {
 	super();
-	// TODO Auto-generated constructor stub
+
 }
 @Override
 public String toString() {

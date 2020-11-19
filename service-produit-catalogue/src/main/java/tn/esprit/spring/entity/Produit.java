@@ -56,7 +56,7 @@ public Produit(String id, String name, double price, Category category) {
 
 public Produit() {
 	super();
-	// TODO Auto-generated constructor stub
+
 }
 
 @Override
